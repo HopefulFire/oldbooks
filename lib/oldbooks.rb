@@ -1,6 +1,6 @@
-require 'oldbooks/version.rb'
-require 'oldbooks/authors.rb'
-require 'oldbooks/books.rb'
+require 'require_all'
+
+require_all 'lib'
 
 module Oldbooks
   class Error < StandardError; end
