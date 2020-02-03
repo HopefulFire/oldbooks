@@ -10,4 +10,9 @@ class Oldbooks::Author
 		@books = []
 	end
 
+	def add_book(book)
+		book.author = self
+		@books << book
+	end
+
 end

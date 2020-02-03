@@ -32,5 +32,11 @@ RSpec.describe Oldbooks do
 			author = Oldbooks::Author.new
 			expect(author.books.class).to be(Array)
 		end
+		it '#add_book can add a book' do
+			author = Oldbooks::Author.new
+			book = Oldbooks::Book.new
+			author.add_book(book)
+			expect(author.books).to include(book)
+		end
 	end
 end
