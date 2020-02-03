@@ -1,0 +1,3 @@
+class Oldbooks::Scraper
+
+end
