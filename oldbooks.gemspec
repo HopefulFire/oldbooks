@@ -1,6 +1,7 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "oldbooks/version"
+require "open-uri"
 
 Gem::Specification.new do |spec|
   spec.name          = "oldbooks"
@@ -31,4 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_dependency "require_all"
+  spec.add_dependency "nokogiri", "~> 1.0"
 end
