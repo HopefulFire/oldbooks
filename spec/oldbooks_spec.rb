@@ -67,7 +67,7 @@ RSpec.describe Oldbooks do
 			scraper = Oldbooks::Scraper.new('https://duckduckgo.com/')
 			expect(scraper.instance_variable_get('@url')).to eq('https://duckduckgo.com/')			
 		end
-		it 'can scrape an author and his/her books' do
+		it '#scrape_author_and_books can scrape an author and his/her books' do
 			scraper = Oldbooks::Scraper.new('http://www.authorandbookinfo.com/cgi-bin/auth.pl?L001601')
 			scraper.scrape_author_and_books
 			expect(Oldbooks::Author::ALL.first.name).to eq('(Nelle) Harper LEE')
