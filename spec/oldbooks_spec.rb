@@ -16,6 +16,17 @@ RSpec.describe Oldbooks do
 			expect(book.date).to eq('date')
 			expect(book.url).to eq('url')
 		end
+		it '.create initializes a book and saves it' do
+			book1 = Oldbooks::Book.create
+			book2 = Oldbooks::Book.create
+			expect(Oldbooks::Book::ALL).to include(book1)
+			expect(Oldbooks::Book::ALL).to include(book2)
+		end
+		it '.clear_all deletes all books' do
+			book = Oldbooks::Book.create
+			Oldbooks::Book.clear_all
+			expect(Oldbooks::Book::ALL).to eq([])
+		end
 	end
 
 	context '::Author' do
