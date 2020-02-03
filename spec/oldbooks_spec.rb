@@ -28,5 +28,9 @@ RSpec.describe Oldbooks do
 			expect(author.died).to eq('died')
 			expect(author.age).to eq('age')
 		end
+		it 'has_many books' do
+			author = Oldbooks::Author.new
+			expect(author.books.class).to be(Array)
+		end
 	end
 end
