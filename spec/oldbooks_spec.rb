@@ -38,5 +38,16 @@ RSpec.describe Oldbooks do
 			author.add_book(book)
 			expect(author.books).to include(book)
 		end
+		it '.create initializes an author and saves it' do
+			author1 = Oldbooks::Author.create
+			author2 = Oldbooks::Author.create
+			expect(Oldbooks::Author::ALL).to include(author1)
+			expect(Oldbooks::Author::ALL).to include(author2)
+		end
+		it '.clear_all deletes all authors' do
+			author = Oldbooks::Author.create
+			Oldbooks::Author.clear_all
+			expect(Oldbooks::Author::ALL).to eq([])
+		end
 	end
 end
