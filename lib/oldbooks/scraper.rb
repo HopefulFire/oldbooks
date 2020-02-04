@@ -40,7 +40,6 @@ class Oldbooks::Scraper
 				author.add_book(book)
 			end
 		end
-
 	end
-
+	
 end
