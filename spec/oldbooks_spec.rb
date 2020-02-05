@@ -70,8 +70,18 @@ RSpec.describe Oldbooks do
 		it '#scrape_author_and_books can scrape an author and his/her books' do
 			scraper = Oldbooks::Scraper.new('http://www.authorandbookinfo.com/cgi-bin/auth.pl?L001601')
 			scraper.scrape_author_and_books
+
 			expect(Oldbooks::Author::ALL.first.name).to eq('(Nelle) Harper LEE')
+			expect(Oldbooks::Author::ALL.first.gender).to eq('Female')
+			expect(Oldbooks::Author::ALL.first.nationality).to eq('USA')
+			expect(Oldbooks::Author::ALL.first.born).to eq('1926 Apr 28')
+			expect(Oldbooks::Author::ALL.first.died).to eq('2016 Feb 19')
+			expect(Oldbooks::Author::ALL.first.age).to eq('89')
+
 			expect(Oldbooks::Book::ALL.first.title).to eq('To Kill A Mockingbird')
+			expect(Oldbooks::Book::ALL.first.info).to eq('Englishfiction')
+			expect(Oldbooks::Book::ALL.first.date).to eq('1960')
+			expect(Oldbooks::Book::ALL.first.url).to eq(' ')
 		end
 	end
 end
