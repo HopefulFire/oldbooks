@@ -1,5 +1,3 @@
-require 'nokogiri'
-
 class Oldbooks::Scraper
 
 	def initialize(url)
