@@ -7,6 +7,22 @@ RSpec.describe Oldbooks do
 		expect(true).to eq(true)
 	end
 
+	context '::Book' do
+		it 'initializes with a title, an author, a publisher, a condition, a price, and a url' do
+			book = Oldbooks::Book.new(title: 'title', author: 'author', publisher: 'publisher', condition: 'condition', price: 'price', url: 'url')
+			expect(book.title).to eq('title')
+			expect(book.author).to eq('author')
+			expect(book.publisher).to eq('publisher')
+			expect(book.condition).to eq('condition')
+			expect(book.price).to eq('price')
+			expect(book.url).to eq('url')
+		end
+		it '.create initializes a book and saves it' do
+			book = Oldbooks::Book.create
+			expect(Oldbooks::Book::ALL).to include(book)
+		end
+	end
+
 	context '::Scraper' do
 		it 'initializes with a url' do
 			scraper = Oldbooks::Scraper.new('https://duckduckgo.com/')
