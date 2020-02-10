@@ -10,7 +10,8 @@ class Oldbooks::Scraper
 		doc = Nokogiri::HTML(open(@url))
 		doc_books = doc.css('.gridItem')
 		doc_books.each do |doc_book|
-			book_url = HOME_URL + doc_book.css('a:first').attr('href')
+			url = HOME_URL + doc_book.css('a:first').attr('href')
+			book = Oldbooks::Book.create(url: url)
 		end
 	end
 end
