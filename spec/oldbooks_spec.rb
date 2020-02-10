@@ -7,6 +7,15 @@ RSpec.describe Oldbooks do
 		expect(true).to eq(true)
 	end
 
+	context '::CLI' do
+		it '::URLS is a hash of urls' do
+			expect(Oldbooks::CLI::URLS.class).to be(Hash)
+		end
+		it '#choose_url chooses a url' do
+			expect(Oldbooks::CLI::URLS.values).to include(Oldbooks::CLI.new.choose_url)
+		end
+	end
+
 	context '::Book' do
 		it 'initializes with a title, an author, a publisher, a condition, a price, and a url' do
 			book = Oldbooks::Book.new(title: 'title', author: 'author', publisher: 'publisher', condition: 'condition', price: 'price', url: 'url')
@@ -32,6 +41,6 @@ RSpec.describe Oldbooks do
 			scraper = Oldbooks::Scraper.new('https://duckduckgo.com/')
 			expect(scraper.instance_variable_get('@url')).to eq('https://duckduckgo.com/')			
 		end
-		
+
 	end
 end
