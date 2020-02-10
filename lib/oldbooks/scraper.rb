@@ -2,7 +2,7 @@ class Oldbooks::Scraper
 
 	HOME_URL = 'https://www.worldofbooks.com'
 
-	def initialize(url)
+	def initialize(url = '')
 		@url = HOME_URL + url
 	end
 
@@ -14,4 +14,26 @@ class Oldbooks::Scraper
 			book = Oldbooks::Book.create(url: url)
 		end
 	end
+
+	def scrape_book(book)
+		doc = Nokogiri::HTML(open(book.url))
+
+		book.price = doc.css('span.price').text
+
+		information = doc.css('.attribute div')
+		information.each_with_index do |info, index|
+			case index
+			when 1
+				book.title = info.text
+			when 2
+				book.author = info.text
+			when 3
+				book.condition = info.text
+			when 5
+				book.publisher = info.text
+			end
+		end
+		book
+	end
+
 end

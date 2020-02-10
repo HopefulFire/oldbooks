@@ -38,13 +38,17 @@ RSpec.describe Oldbooks do
 
 	context '::Scraper' do
 		it 'initializes with a url' do
-			scraper = Oldbooks::Scraper.new('https://duckduckgo.com/')
-			expect(scraper.instance_variable_get('@url')).to eq('https://duckduckgo.com/')			
+			scraper = Oldbooks::Scraper.new('')
+			expect(scraper.instance_variable_get('@url')).to eq('https://www.worldofbooks.com')			
 		end
 		it '#scrape_booklist scrapes a list of books' do
 			scraper = Oldbooks::Scraper.new(Oldbooks::CLI::URLS[:fiction_books])
 			scraper.scrape_booklist
 			expect(Oldbooks::Book::ALL.length).to eq(48)
+		end
+		it '#scrape_book scrapes a book given a book with a url' do
+			book = Oldbooks::Scraper.new.scrape_book(Oldbooks::Book::ALL.first)
+			expect(book.title).not_to be(nil)
 		end
 	end
 end
