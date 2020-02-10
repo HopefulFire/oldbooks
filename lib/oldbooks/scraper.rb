@@ -3,7 +3,7 @@ class Oldbooks::Scraper
 	HOME_URL = 'https://www.worldofbooks.com'
 
 	def initialize(url)
-		@url = url
+		@url = HOME_URL + url
 	end
 
 	def scrape_booklist

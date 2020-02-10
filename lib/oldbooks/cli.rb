@@ -2,10 +2,10 @@ class Oldbooks::CLI
 
 	URLS =
 	{
-		fiction_books: 'https://www.worldofbooks.com/en-us/category/fiction-books',
-		non_fiction_books: 'https://www.worldofbooks.com/en-us/category/non-fiction-books',
-		childrens_books: 'https://www.worldofbooks.com/en-us/category/childrens-books',
-		rare_books: 'https://www.worldofbooks.com/en-us/category/rare-books'
+		fiction_books: '/en-us/category/fiction-books',
+		non_fiction_books: '/en-us/category/non-fiction-books',
+		childrens_books: '/en-us/category/childrens-books',
+		rare_books: '/en-us/category/rare-books'
 	}
 
 	def choose_url
