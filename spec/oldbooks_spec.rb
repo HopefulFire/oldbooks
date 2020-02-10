@@ -21,6 +21,10 @@ RSpec.describe Oldbooks do
 			book = Oldbooks::Book.create
 			expect(Oldbooks::Book::ALL).to include(book)
 		end
+		it '.clear_all clears all books' do
+			Oldbooks::Book.clear_all
+			expect(Oldbooks::Book::ALL).to eq([])
+		end
 	end
 
 	context '::Scraper' do
@@ -28,5 +32,6 @@ RSpec.describe Oldbooks do
 			scraper = Oldbooks::Scraper.new('https://duckduckgo.com/')
 			expect(scraper.instance_variable_get('@url')).to eq('https://duckduckgo.com/')			
 		end
+		
 	end
 end
