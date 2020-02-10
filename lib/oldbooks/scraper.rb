@@ -1,6 +1,6 @@
 class Oldbooks::Scraper
 
-	HOME_URL = 'https://www.worldofbooks.com/'
+	HOME_URL = 'https://www.worldofbooks.com'
 
 	def initialize(url)
 		@url = url
