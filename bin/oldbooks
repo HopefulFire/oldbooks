@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "oldbooks"
+
+cli = Oldbooks::CLI.new
+cli.run

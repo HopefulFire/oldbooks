@@ -8,6 +8,41 @@ class Oldbooks::CLI
 		rare_books: '/en-us/category/rare-books'
 	}
 
+	def run
+		scraper = Oldbooks::Scraper.new(choose_url)
+		scraper.scrape_booklist
+		list_books
+		choose_book
+	end
+
+	def choose_book
+		loop do
+			puts 'Choose a book by number or type exit'
+			input = gets.strip
+			break if input == 'exit'
+			index = input.to_i - 1
+			if index != -1
+				describe_book(index)
+			end
+		end
+	end
+
+	def describe_book(index)
+		book = Oldbooks::Book::ALL[index]
+		puts "#{book.title}:"
+		puts "It was authored by #{book.author},"
+		puts "was published by #{book.publisher},"
+		puts "and is in #{book.condition} condition."
+		puts "It is going for #{book.price}."
+		puts "Find it at #{book.url}"
+	end
+
+	def list_books
+		Oldbooks::Book::ALL.each.with_index(1) do |book, index|
+			puts "#{index}. #{book.title}"
+		end
+	end
+
 	def choose_url
 		puts 'Enter 1 for fiction, 2 for non-fiction, 3 for childrens, and 4 for rare books:'
 		
