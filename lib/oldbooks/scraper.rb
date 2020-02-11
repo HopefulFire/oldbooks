@@ -12,7 +12,10 @@ class Oldbooks::Scraper
 		doc_books.each do |doc_book|
 			url = HOME_URL + doc_book.css('a:first').attr('href')
 			book = Oldbooks::Book.create(url: url)
+			scrape_book(book)
+			print '*'
 		end
+		puts
 	end
 
 	def scrape_book(book)

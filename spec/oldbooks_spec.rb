@@ -47,7 +47,7 @@ RSpec.describe Oldbooks do
 			expect(Oldbooks::Book::ALL.length).to eq(48)
 		end
 		it '#scrape_book scrapes a book given a book with a url' do
-			book = Oldbooks::Scraper.new.scrape_book(Oldbooks::Book::ALL.first)
+			book = Oldbooks::Book::ALL.first
 			expect(book.title).not_to be(nil)
 		end
 	end
