@@ -29,12 +29,14 @@ class Oldbooks::CLI
 
 	def describe_book(index)
 		book = Oldbooks::Book::ALL[index]
-		puts "#{book.title}:"
-		puts "It was authored by #{book.author},"
-		puts "was published by #{book.publisher},"
-		puts "and is in #{book.condition} condition."
-		puts "It is going for #{book.price}."
-		puts "Find it at #{book.url}"
+		if book
+			puts "#{book.title}:"
+			puts "It was authored by #{book.author},"
+			puts "was published by #{book.publisher},"
+			puts "and is in #{book.condition} condition."
+			puts "It is going for #{book.price}."
+			puts "Find it at #{book.url}"
+		end
 	end
 
 	def list_books
