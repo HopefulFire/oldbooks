@@ -17,6 +17,7 @@ class Oldbooks::CLI
 
 	def choose_book
 		loop do
+			puts
 			puts 'Choose a book by number or type exit'
 			input = gets.strip
 			break if input == 'exit'
@@ -25,27 +26,33 @@ class Oldbooks::CLI
 				describe_book(index)
 			end
 		end
+		puts 'Goodbye!'
 	end
 
 	def describe_book(index)
 		book = Oldbooks::Book::ALL[index]
 		if book
+			puts
 			puts "#{book.title}:"
 			puts "It was authored by #{book.author},"
 			puts "was published by #{book.publisher},"
 			puts "and is in #{book.condition} condition."
 			puts "It is going for #{book.price}."
 			puts "Find it at #{book.url}"
+		else
+			puts 'Invalid number, try again'
 		end
 	end
 
 	def list_books
 		Oldbooks::Book::ALL.each.with_index(1) do |book, index|
 			puts "#{index}. #{book.title}"
+			puts
 		end
 	end
 
 	def choose_url
+		puts
 		puts 'Enter 1 for fiction, 2 for non-fiction, 3 for childrens, and 4 for rare books:'
 		
 		case gets.strip
