@@ -7,13 +7,21 @@ class Oldbooks::Scraper
 	end
 
 	def scrape_booklist
+		puts 'Fetching Library'
 		doc = Nokogiri::HTML(open(@url))
 		doc_books = doc.css('.gridItem')
-		doc_books.each do |doc_book|
+		print 'Creating Books'
+		threads = doc_books.map do |doc_book|
 			url = HOME_URL + doc_book.css('a:first').attr('href')
 			book = Oldbooks::Book.create(url: url)
-			scrape_book(book)
-			print '*'
+			print '.'
+			Thread.new { scrape_book(book) }
+		end
+		puts
+		print 'Collecting Books'
+		threads.each do |thread|
+			thread.join
+			print '.'
 		end
 		puts
 	end
