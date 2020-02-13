@@ -19,6 +19,10 @@ class Oldbooks::Scraper
 	end
 
 	def scrape_book(book)
+
+		# note: works with most books, not all -\/(`_`)\/-
+		# could probably be improved with .split operations
+		
 		doc = Nokogiri::HTML(open(book.url))
 
 		book.price = doc.css('span.price').text
