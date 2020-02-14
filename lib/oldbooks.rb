@@ -1,4 +1,5 @@
 require 'require_all'
+require 'rainbow'
 require 'nokogiri'
 require 'open-uri'
 
