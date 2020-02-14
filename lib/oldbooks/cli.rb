@@ -12,36 +12,34 @@ class Oldbooks::CLI
 		scraper = Oldbooks::Scraper.new(choose_url)
 		scraper.scrape_booklist
 		list_books
-		choose_book
-	end
-
-	def choose_book
 		loop do
 			puts
-			puts 'Choose a book by number or type exit'
+			puts 'Choose a book by number or type exit:'
 			input = gets.strip
 			break if input == 'exit'
-			index = input.to_i - 1
-			if index != -1
-				describe_book(index)
-			end
+			choose_book(input)
 		end
 		puts 'Goodbye!'
 	end
 
-	def describe_book(index)
+	def choose_book(input)
+		index = input.to_i - 1
 		book = Oldbooks::Book::ALL[index]
-		if book
-			puts
-			puts "#{book.title}:"
-			puts "It was authored by #{book.author},"
-			puts "was published by #{book.publisher},"
-			puts "and is in #{book.condition} condition."
-			puts "It is going for #{book.price}."
-			puts "Find it at #{book.url}"
+		if book && index >= 0
+			describe_book(book)
 		else
 			puts 'Invalid number, try again'
 		end
+	end
+
+	def describe_book(book)
+		puts
+		puts "#{book.title}:"
+		puts "It was authored by #{book.author},"
+		puts "was published by #{book.publisher},"
+		puts "and is in #{book.condition} condition."
+		puts "It is going for #{book.price}."
+		puts "Find it at #{book.url}"
 	end
 
 	def list_books
