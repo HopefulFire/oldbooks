@@ -44,8 +44,8 @@ class Oldbooks::CLI
 
 	def list_books
 		Oldbooks::Book::ALL.each.with_index(1) do |book, index|
-			puts "#{index}. #{book.title}"
 			puts
+			puts "#{index}. #{book.title}"
 		end
 	end
 
