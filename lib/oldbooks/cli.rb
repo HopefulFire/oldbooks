@@ -14,7 +14,7 @@ class Oldbooks::CLI
 		list_books
 		loop do
 			puts
-			puts 'Choose a book by number or type exit:'
+			puts Rainbow('Choose a book by number or type exit:').green
 			input = gets.strip
 			break if input == 'exit'
 			choose_book(input)
@@ -28,13 +28,13 @@ class Oldbooks::CLI
 		if book && index >= 0
 			describe_book(book)
 		else
-			puts 'Invalid number, try again'
+			puts Rainbow('Invalid number, try again').bright.red
 		end
 	end
 
 	def describe_book(book)
 		puts
-		puts "#{book.title}:"
+		puts Rainbow("#{book.title}:").aqua
 		puts "It was authored by #{book.author},"
 		puts "was published by #{book.publisher},"
 		puts "and is in #{book.condition} condition."
@@ -45,13 +45,13 @@ class Oldbooks::CLI
 	def list_books
 		Oldbooks::Book::ALL.each.with_index(1) do |book, index|
 			puts
-			puts "#{index}. #{book.title}"
+			puts Rainbow("#{index}. #{book.title}").aqua
 		end
 	end
 
 	def choose_url
 		puts
-		puts 'Enter 1 for fiction, 2 for non-fiction, 3 for childrens, and 4 for rare books:'
+		puts Rainbow('Enter 1 for fiction, 2 for non-fiction, 3 for childrens, and 4 for rare books:').green
 		
 		case gets.strip
 		when '1'
